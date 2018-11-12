@@ -4,8 +4,7 @@ var canvasHeight = 600
 var canvas = document.getElementById('canvas')
 var context = canvas.getContext('2d')
 
-canvas.width = canvasWidth
-canvas.height = canvasHeight
+
 var R = 80
 var r = 50
 var rot = 0
@@ -17,6 +16,11 @@ var clippingArea = {x: -1, y: -1, r: R}
 var image = new Image()
 image.src = './1.jpg'
 image.onload = function(){
+	canvasWidth = $('.container').width()
+	canvasHeight = $('.container').height()
+	canvas.width = canvasWidth
+	canvas.height = canvasHeight
+	R = canvasWidth/10
 	initCanvas();
 }
 function initCanvas(){
@@ -110,7 +114,9 @@ function show(){
 	}
 }
 
-
+$('#canvas').on('touchstart', function(e){
+	e.preventDefault()
+})
 
 
 
